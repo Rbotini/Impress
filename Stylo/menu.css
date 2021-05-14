@@ -1,0 +1,43 @@
+ body{
+    margin: 0;
+    padding: 0;
+}html{
+    margin: 0;
+    padding: 0;
+}
+
+
+img{
+    width: 90px;
+    height: 60px;
+    
+}ul:li:a{
+    color: azure;
+}.navbar-light .navbar-nav .nav-link {
+    color: #3E4095;
+    font-size: 18px;
+    font-family: "Roboto";
+    padding: 10px;
+    margin-left: 20px ;
+  }
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: #ff0054;
+  }nav{
+      padding: 30px;
+ 
+  }#Pesquisar{
+      display: flex;
+      margin-top: 10px;
+  }.btn-custom {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+}
+
+.btn-icon {
+	padding: 8px;
+	background: #ffffff;
+}span{
+    padding: 5px;
+}.table{
+    margin-top: 10px;
+}

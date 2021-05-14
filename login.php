@@ -10,7 +10,6 @@ require 'Notificacao.class.php';
 
 $u = new Usuario();
 
-$n = new Notificacao();
 
 //validar dados de ususario e senha enviado atraves do formulario 
 

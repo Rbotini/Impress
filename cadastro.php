@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title>Title</title>
+    <title>Cadastro</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,6 +83,19 @@
                             <label for="inputCEP">Quantidade</label>
                             <input type="number" class="form-control" name="quantidade" id="quantidade">
                         </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCEP">Numero de Série</label>
+                            <input type="text" class="form-control" name="quantidade" id="quantidade">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputImpressora">Tipo de Contrato</label>
+                            <select id="inputImpressora" class="form-control">
+                                <option selected>Escolher...</option>
+                                <option value="1">Manutenção</option>
+                                <option value="2">Locação</option>
+
+                            </select>
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -93,6 +106,7 @@
                             <label for="inputCEP">Data Inicio </label>
                             <input type="datetime-local" class="form-control"  name="data" id="data" placeholder="DD/MM/AA">
                         </div>
+                        
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                     <button type="submit" class="btn btn-warning ">Limpar</button>
