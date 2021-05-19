@@ -4,7 +4,7 @@ session_start();
 //chamando arquivo para conexao banco de dados
 require 'bd/conexao.php';
 require 'Usuario.class.php';
-require 'Notificacao.class.php';
+
 
 
 

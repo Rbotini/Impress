@@ -1,8 +1,21 @@
+<?php
+
+require_once './bd/conexao2.php';
+$buscar_cadastro = "SELECT * FROM clientes";
+$query_cadastro = mysqli_query($conexao,$buscar_cadastro);
+
+
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Cadastro Cliente</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,7 +51,7 @@
                         Cadastro
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Novo Cliente</a>
+                        <a class="dropdown-item" href="cadastro.php">Novo Cliente</a>
                         <a class="dropdown-item" href="#">Impressora</a>
 
                     </div>
@@ -82,8 +95,8 @@
             </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-outline-primary">
-                    <i class="bi bi-person-plus-fill"></i><span style="padding: 5px;">Novo Cliente</span>
-
+                  <a href="cadastro.php"><i class="bi bi-person-plus-fill"></i><span style="padding: 5px;">Novo Cliente</span></a>  
+            
                 </button>
                 <button type="button" class="btn btn-outline-warning">
                     <i class="bi bi-arrow-repeat"></i>
@@ -93,43 +106,39 @@
             </div>
 
         </div>
-        <section>
-            <div class="row">
-               
-                <div class="col-md-11">
-                    <table class="table style=" margin-top: 10px;">
-                        <thead>
-                            <tr>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Cnpj</th>
-                                <th scope="col">Endereço</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Faria Veiculos</td>
-                                <td>000004578/0001</td>
-                                <td>Av Rio Branco 10004</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+           <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                  while($receber_cadastro = mysqli_fetch_array($query_cadastro)){
+                      $idcliente = $receber_cadastro['idcliente'];
+                      $nome = $receber_cadastro['nome'];
+                      $email = $receber_cadastro['email'];
+                      $telefone = $receber_cadastro['telefone']
+                
+                ?>
+            
+                <tr>
+                    <td scope="row"><?php echo $idcliente ?></td>
+                    <td><?php echo $nome?></td>
+                    <td><?php echo $email?></td>
+                    <td><?php echo $telefone?></td>
+                    <td><button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Excluir</button>
+                    <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-pen"></i>Editar</button>
+                  </td>
+                    
+                </tr>
+            </tbody>
+            <?php };?>
+        </table>
 
-            </div>
-        </section>
 
     </div>
 
