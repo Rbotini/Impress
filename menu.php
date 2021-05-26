@@ -1,8 +1,8 @@
 <?php
 
 require_once './bd/conexao2.php';
-$buscar_cadastro = "SELECT * FROM clientes";
-$query_cadastro = mysqli_query($conexao,$buscar_cadastro);
+$buscar_cadastro = "SELECT * FROM clientes ";
+$query_cadastro = mysqli_query($conexao, $buscar_cadastro);
 
 
 
@@ -95,8 +95,8 @@ $query_cadastro = mysqli_query($conexao,$buscar_cadastro);
             </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-outline-primary">
-                  <a href="cadastro.php"><i class="bi bi-person-plus-fill"></i><span style="padding: 5px;">Novo Cliente</span></a>  
-            
+                    <a href="cadastro.php" style="text-decoration: none;"><i class="bi bi-person-plus-fill"></i><span style="padding: 5px;">Novo Cliente</span></a>
+
                 </button>
                 <button type="button" class="btn btn-outline-warning">
                     <i class="bi bi-arrow-repeat"></i>
@@ -106,40 +106,77 @@ $query_cadastro = mysqli_query($conexao,$buscar_cadastro);
             </div>
 
         </div>
-           <table class="table">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                  while($receber_cadastro = mysqli_fetch_array($query_cadastro)){
-                      $idcliente = $receber_cadastro['idcliente'];
-                      $nome = $receber_cadastro['nome'];
-                      $email = $receber_cadastro['email'];
-                      $telefone = $receber_cadastro['telefone']
-                
-                ?>
-            
-                <tr>
-                    <td scope="row"><?php echo $idcliente ?></td>
-                    <td><?php echo $nome?></td>
-                    <td><?php echo $email?></td>
-                    <td><?php echo $telefone?></td>
-                    <td><button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Excluir</button>
-                    <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-pen"></i>Editar</button>
-                  </td>
-                    
-                </tr>
-            </tbody>
-            <?php };?>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($receber_cadastro = mysqli_fetch_array($query_cadastro)) {
+                        $idcliente = $receber_cadastro['idcliente'];
+                        $nome = $receber_cadastro['nome'];
+                        $email = $receber_cadastro['email'];
+                        $telefone = $receber_cadastro['telefone']
+
+                    ?>
+
+                        <tr>
+                            <td scope="row"><?php echo $idcliente ?></td>
+                            <td><?php echo $nome ?></td>
+                            <td><?php echo $email ?></td>
+                            <td><?php echo $telefone ?></td>
+                            <td>
+                                <a style="margin-right: 5px; font-size:18px" href="visualizar.php?view=<?php echo $idcliente;?>"><i class="bi bi-eye"></i></a>
+                                <a style="margin-right: 5px" href=><i class="bi bi-pen"></i></a>
+                               <a style="margin-right: 5px"href="excluir.php?del=<?php echo $idcliente;?>"><i class="bi bi-trash"></i></a>
+                                
+                        </tr>
+                </tbody>
+            <?php }; ?>
+            </table>
+
+        </div>
+        <div class='visualizar'>
+            <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <?php
+                            $buscar_cadastro = "SELECT * FROM clientes WHERE idcliente = '$idcliente' ";
+                            $query_visualizar = mysqli_query($conexao, $buscar_cadastro);
+                            while ($receber_cadastro = mysqli_fetch_array($query_visualizar)) {
+                                $idcliente = $receber_cadastro['idcliente'];
+                                $nome = $receber_cadastro['nome'];
+                            };
+                            echo $nome;
+
+                            ?>
 
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 

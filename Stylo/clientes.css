@@ -6,4 +6,9 @@ body{
     color: #ffffff;
 }.container{
     margin-top: 10px;
+}.alerta{
+    display: flex;
+    width: 100%;
+    height: 80;
+    border: 1px solid;
 }

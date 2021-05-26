@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -28,46 +38,61 @@
                 <h5>Novo Cliente</h5>
             </div>
             <div class="card-body">
-                <form  id="cadastro" action="cadastrar.php" method="post">
+                <form class="needs-validation" novalidate id="cadastro" action="cadastrar.php" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Nome Completo </label>
-                            <input type="text" class="form-control"  name="nome" placeholder="Digite seu Nome">
+                            <input type="text" class="form-control" name="nome" placeholder="Digite o Nome" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um Nome.
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputPassword4">CPF/CNPJ</label>
-                            <input type="text" class="form-control" name="cnpj" placeholder="CPF ou CCNPJ">
+                            <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="CPF ou CNPJ" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um Cpf ou Cnpj.
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail4">Telefone</label>
-                            <input type="tel" class="form-control" name="telefone"  placeholder="00000-0000">
+                            <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="00000-0000" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um Telefone.
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputAddress">Endereço</label>
-                            <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Rua das Figueiras, nº 0">
+                            <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Rua das Figueiras, nº 0" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um Endereço.
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputAddress">E-mail</label>
-                            <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail">
+                            <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail" required>
+                            <div class="invalid-feedback">
+                                Por favor, informe um E-mail.
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Cidade</label>
-                            <input type="text" class="form-control" name="cidade" id="inputCity" placeholder="Cidade">
+                            <input type="text" class="form-control" name="cidade" id="inputCity" placeholder="Cidade" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEstado">Estado</label>
-                            <select id="inputEstado" name="estado" class="form-control">
+                            <select id="inputEstado" name="estado" class="custom-select" required>
                                 <option selected>Escolher...</option>
                                 <option>SP</option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">CEP</label>
-                            <input type="text" class="form-control" name="cep" id="inputCEP" placeholder="Cep">
+                            <input type="text" class="form-control" name="cep" id="inputCEP" placeholder="Cep" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -82,11 +107,11 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">Quantidade</label>
-                            <input type="number" class="form-control" name="quantidade" id="quantidade">
+                            <input type="number" class="form-control" name="quantidade" id="quantidade" required>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">Numero de Série</label>
-                            <input type="text" class="form-control" name="quantidade" id="quantidade">
+                            <input type="text" class="form-control" name="quantidade" id="quantidade" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputImpressora">Tipo de Contrato</label>
@@ -100,32 +125,52 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputImpressora">Valor Do Contrato R$</label>
-                            <input type="text" class="form-control" name="valor" id="valor">
+                            <label for="inputImpressora">Valor Do Contrato</label>
+                            <input type="text" class="form-control" name="valor" id="valor" required>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">Data Inicio </label>
-                            <input type="datetime-local" class="form-control"  name="data" id="data" placeholder="DD/MM/AA">
+                            <input type="date" class="form-control" name="data" id="data" placeholder="DD/MM/AA" required>
                         </div>
-                        
+
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    
+                    <a href="menu.php">Voltar</a>
+
+
+
                 </form>
 
+                <div>
+                    <?php
+
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+
+                    ?>
+                </div>
+
             </div>
+
+
         </div>
+    </div>
 
     </div>
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="./sweetalert/sweetalert2.all.min.js"></script>
-    <script src="./codigo2.js"></script>
+    <script src="./codigo.js"></script>
+
 </body>
 
 </html>

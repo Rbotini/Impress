@@ -40,4 +40,8 @@ img{
     padding: 5px;
 }.table{
     margin-top: 10px;
+}a{
+    color:#3E4095;
+}a:hover{
+  color: #f72585;
 }
